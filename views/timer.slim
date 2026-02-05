@@ -1,0 +1,49 @@
+div
+  h1 Timer
+  p#display 00:00:00.000
+  div
+    button#start-btn Start
+    button#pause-btn Pause
+    button#reset-btn Reset
+
+script
+  | let milliseconds = 0;
+  | let running = false;
+  | let intervalId = null;
+  |
+  | const displayEl = document.getElementById('display');
+  | const startBtn = document.getElementById('start-btn');
+  | const pauseBtn = document.getElementById('pause-btn');
+  | const resetBtn = document.getElementById('reset-btn');
+  |
+  | function updateDisplay() {
+  |   const hrs = Math.floor(milliseconds / 3600000);
+  |   const mins = Math.floor((milliseconds % 3600000) / 60000);
+  |   const secs = Math.floor((milliseconds % 60000) / 1000);
+  |   const milli = milliseconds % 1000;
+  |   displayEl.textContent = String(hrs).padStart(2, '0') + ':' + String(mins).padStart(2, '0') + ':' + String(secs).padStart(2, '0') + '.' + String(milli).padStart(3, '0');
+  | }
+  |
+  | startBtn.addEventListener('click', () => {
+  |   if (!running) {
+  |     running = true;
+  |     intervalId = setInterval(() => {
+  |       milliseconds += 10;
+  |       updateDisplay();
+  |     }, 10);
+  |   }
+  | });
+  |
+  | pauseBtn.addEventListener('click', () => {
+  |   if (running) {
+  |     running = false;
+  |     clearInterval(intervalId);
+  |   }
+  | });
+  |
+  | resetBtn.addEventListener('click', () => {
+  |   running = false;
+  |   clearInterval(intervalId);
+  |   milliseconds = 0;
+  |   updateDisplay();
+  | });
