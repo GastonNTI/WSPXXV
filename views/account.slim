@@ -1,0 +1,27 @@
+center
+  .account-container
+    h2 Create Account
+    
+    - if @error
+      .alert.alert-danger
+        = @error
+    
+    - if @success
+      .alert.alert-success
+        = @success
+    
+    form method="post" action="/account"
+      .form-group
+        label for="username" Username: 
+        input.form-control type="text" id="username" name="username" placeholder="Enter username" required="" style="margin-bottom: 10px"
+      
+      .form-group
+        label for="password" Password: 
+        input.form-control type="password" id="password" name="password" placeholder="Enter password" required="" style="margin-bottom: 10px"
+      
+      .form-group
+        label for="password_confirm" Confirm Password: 
+        input.form-control type="password" id="password_confirm" name="password_confirm" placeholder="Confirm password" required="" style="margin-bottom: 10px"
+      
+      button.btn.btn-primary type="submit" Create Account 
+
