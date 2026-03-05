@@ -1,0 +1,182 @@
+h1 style="color: white" Algorithm
+
+style
+  | .card {
+  |     border: 2px solid white;
+  | }
+  | p[contenteditable="true"] {
+  |     cursor: text;
+  |     padding: 2px 4px;
+  |     border-radius: 2px;
+  | }
+  | p[contenteditable="true"]:hover {
+  |     background-color: rgba(255, 255, 255, 0.1);
+  | }
+  | p[contenteditable="true"]:focus {
+  |     outline: 1px solid white;
+  |     background-color: rgba(255, 255, 255, 0.2);
+  | }
+
+script
+  | document.addEventListener('DOMContentLoaded', function() {
+  |     const editableParagraphs = document.querySelectorAll('p[contenteditable="true"]');
+  |     editableParagraphs.forEach(function(p) {
+  |         p.addEventListener('blur', function() {
+  |             const algName = this.dataset.algName;
+  |             const newText = this.textContent;
+  |             localStorage.setItem('alg_' + algName, newText);
+  |         });
+  |         const saved = localStorage.getItem('alg_' + p.dataset.algName);
+  |         if (saved) {
+  |             p.textContent = saved;
+  |         }
+  |     });
+  | });
+
+div class="card"
+    img src="Aa-perm.png" alt="Aa-perm"
+    div class="container"
+        h4 style="color: white" 
+            b Aa-perm
+        p style="color: white" contenteditable="true" data-alg-name="Aa-perm" x L2 D2 L' U' L D2 L' U L'
+
+div class="card"
+    img src="Ab-perm.png" alt="Ab-perm"
+    div class="container"
+        h4 style="color: white"
+            b Ab-perm
+        p style="color: white" contenteditable="true" data-alg-name="Ab-perm" x' L2 D2 L U L' D2 L U' L
+
+div class="card"
+    img src="F-perm.png" alt="F-perm"
+    div class="container"
+        h4 style="color: white"
+            b F-perm
+        p style="color: white" contenteditable="true" data-alg-name="F-perm" R' U' F' R U R' U' R' F R2 U' R' U' R U R' U R
+
+div class="card"
+    img src="Ga-perm.png" alt="Ga-perm"
+    div class="container"
+        h4 style="color: white"
+            b Ga-perm
+        p style="color: white" contenteditable="true" data-alg-name="Ga-perm" R2 U R' U R' U' R U' R2 U' D R' U R D'
+
+div class="card"
+    img src="Gb-perm.png" alt="Gb-perm"
+    div class="container"
+        h4 style="color: white"
+            b Gb-perm
+        p style="color: white" contenteditable="true" data-alg-name="Gb-perm" R' U' R U D' R2 U R' U R U' R U' R2 D
+
+
+div class="card"
+    img src="Gc-perm.png" alt="Gc-perm"
+    div class="container"
+        h4 style="color: white"
+            b Gc-perm
+        p style="color: white" contenteditable="true" data-alg-name="Gc-perm" R2 U' R U' R U R' U R2 U D' R U' R' D
+
+div class="card"
+    img src="Gd-perm.png" alt="Gd-perm"
+    div class="container"
+        h4 style="color: white"
+            b Gd-perm
+        p style="color: white" contenteditable="true" data-alg-name="Gd-perm" R U R' U' D R2 U' R U' R' U R' U R2 D'
+
+div class="card"
+    img src="Ja-perm.png" alt="Ja-perm"
+    div class="container"
+        h4 style="color: white"
+            b Ja-perm
+        p style="color: white" contenteditable="true" data-alg-name="Ja-perm" x R2 F R F' R U2 r' U r U2
+
+div class="card"
+    img src="Jb-perm.png" alt="Jb-perm"
+    div class="container"
+        h4 style="color: white"
+            b Jb-perm
+        p style="color: white" contenteditable="true" data-alg-name="Jb-perm" R U R' F' R U R' U' R' F R2 U' R'
+
+div class="card"
+    img src="Ra-perm.png" alt="Ra-perm"
+    div class="container"
+        h4 style="color: white"
+            b Ra-perm
+        p style="color: white" contenteditable="true" data-alg-name="Ra-perm" R U' R' U' R U R D R' U' R D' R' U2 R'
+
+div class="card"
+    img src="Rb-perm.png" alt="Rb-perm"
+    div class="container"
+        h4 style="color: white"
+            b Rb-perm
+        p style="color: white" contenteditable="true" data-alg-name="Rb-perm" R2 F R U R U' R' F' R U2 R' U2 R
+
+div class="card"
+    img src="T-perm.png" alt="T-perm"
+    div class="container"
+        h4 style="color: white"
+            b T-perm
+        p style="color: white" contenteditable="true" data-alg-name="T-perm" R U R' U' R' F R2 U' R' U' R U R' F'
+
+div class="card"
+    img src="E-perm.png" alt="E-perm"
+    div class="container"
+        h4 style="color: white"
+            b E-perm
+        p style="color: white" contenteditable="true" data-alg-name="E-perm" x' L' U L D' L' U' L D L' U' L D' L' U L D
+
+div class="card"
+    img src="Na-perm.png" alt="Na-perm"
+    div class="container"
+        h4 style="color: white"
+            b Na-perm
+        p style="color: white" contenteditable="true" data-alg-name="Na-perm" R U R' U R U R' F' R U R' U' R' F R2 U' R' U2 R U' R'
+
+div class="card"
+    img src="Nb-perm.png" alt="Nb-perm"
+    div class="container"
+        h4 style="color: white"
+            b Nb-perm
+        p style="color: white" contenteditable="true" data-alg-name="Nb-perm" R' U R U' R' F' U' F R U R' F R' F' R U' R
+
+div class="card"
+    img src="V-perm.png" alt="V-perm"
+    div class="container"
+        h4 style="color: white"
+            b V-perm
+        p style="color: white" contenteditable="true" data-alg-name="V-perm" R' U R' U' y R' F' R2 U' R' U R' F R F
+
+div class="card"
+    img src="Y-perm.png" alt="Y-perm"
+    div class="container"
+        h4 style="color: white"
+            b Y-perm
+        p style="color: white" contenteditable="true" data-alg-name="Y-perm" F R U' R' U' R U R' F' R U R' U' R' F R F'
+
+div class="card"
+    img src="H-perm.png" alt="H-perm"
+    div class="container"
+        h4 style="color: white"
+            b H-perm
+        p style="color: white" contenteditable="true" data-alg-name="H-perm" M2 U M2 U2 M2 U M2
+
+div class="card"
+    img src="Ua-perm.png" alt="Ua-perm"
+    div class="container"
+        h4 style="color: white"
+            b Ua-perm
+        p style="color: white" contenteditable="true" data-alg-name="Ua-perm" M2 U M U2 M' U M2
+
+div class="card"
+    img src="Ub-perm.png" alt="Ub-perm"
+    div class="container"
+        h4 style="color: white"
+            b Ub-perm
+        p style="color: white" contenteditable="true" data-alg-name="Ub-perm" M2 U' M U2 M' U' M2
+
+div class="card"
+    img src="Z-perm.png" alt="Z-perm"
+    div class="container"
+        h4 style="color: white"
+            b Z-perm
+        p style="color: white" contenteditable="true" data-alg-name="Z-perm" M' U M2 U M2 U M' U2 M2

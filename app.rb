@@ -11,3 +11,7 @@ end
 get ('/timer') do
   slim :timer
 end
+
+get ('/algorithm') do
+  slim :algorithm
+end
