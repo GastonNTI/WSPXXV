@@ -1,0 +1,21 @@
+center
+  .account-container
+    h2 Login
+
+    - if @error
+      .alert.alert-danger
+        = @error
+
+    form method="post" action="/login"
+      .form-group
+        label for="username" Username:
+        input.form-control type="text" id="username" name="username" placeholder="Enter username" required="" style="margin-bottom: 10px"
+
+      .form-group
+        label for="password" Password:
+        input.form-control type="password" id="password" name="password" placeholder="Enter password" required="" style="margin-bottom: 10px"
+
+      button.btn.btn-primary type="submit" Login
+
+    p
+      a href="/account" Create a new account

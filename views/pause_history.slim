@@ -1,0 +1,25 @@
+center
+  h1 Pause History
+
+  - if @pause_times.empty?
+    p No pause times recorded yet.
+  - else
+    table style="border-collapse: collapse; width: 100%; max-width: 600px;"
+      thead
+        tr
+          th style="border: 1px solid #ddd; padding: 8px; text-align: left;" Time Paused
+          th style="border: 1px solid #ddd; padding: 8px; text-align: left;" When
+      tbody
+        - @pause_times.each do |pause_time|
+          - milliseconds = pause_time[0]
+          - hrs = milliseconds / 3600000
+          - mins = (milliseconds % 3600000) / 60000
+          - secs = (milliseconds % 60000) / 1000
+          - milli = milliseconds % 1000
+          - time_str = "#{hrs.to_s.rjust(2, '0')}:#{mins.to_s.rjust(2, '0')}:#{secs.to_s.rjust(2, '0')}.#{milli.to_s.rjust(3, '0')}"
+          tr
+            td style="border: 1px solid #ddd; padding: 8px;" = time_str
+            td style="border: 1px solid #ddd; padding: 8px;" = pause_time[1]
+
+  br
+  a href="/timer" Back to Timer

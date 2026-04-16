@@ -1,6 +1,21 @@
 center
+  style
+    | h2, p, label, a, input {
+    |   color: white;
+    |   font-size: 1.1em;
+    | }
+    | h1 {
+    |   color: white;
+    |   font-size: 2em;
+    | }
+    | input {
+    |   color: black;
+    | }
+    | .alert-danger, .alert-success {
+    |   color: white;
+    | }
   .account-container
-    h2 Create Account
+    h1 Create Account
     
     - if @error
       .alert.alert-danger
@@ -24,4 +39,7 @@ center
         input.form-control type="password" id="password_confirm" name="password_confirm" placeholder="Confirm password" required="" style="margin-bottom: 10px"
       
       button.btn.btn-primary type="submit" Create Account 
+
+    br
+    a.btn.btn-secondary href="/login" Already have an account? Login 
 

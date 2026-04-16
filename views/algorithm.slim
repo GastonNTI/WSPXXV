@@ -1,35 +1,36 @@
 h1 style="color: white" Algorithm
 
 style
-  | .card {
-  |     border: 2px solid white;
-  | }
-  | p[contenteditable="true"] {
-  |     cursor: text;
-  |     padding: 2px 4px;
-  |     border-radius: 2px;
-  | }
-  | p[contenteditable="true"]:hover {
-  |     background-color: rgba(255, 255, 255, 0.1);
-  | }
-  | p[contenteditable="true"]:focus {
-  |     outline: 1px solid white;
-  |     background-color: rgba(255, 255, 255, 0.2);
-  | }
+  | * {\n  |   color: white;\n  | }\n  | .card {\n  |     border: 2px solid white;\n  | }\n  | p[contenteditable=\"true\"] {\n  |     cursor: text;\n  |     padding: 2px 4px;\n  |     border-radius: 2px;\n  |     color: white;\n  | }\n  | p[contenteditable=\"true\"]:hover {\n  |     background-color: rgba(255, 255, 255, 0.1);\n  | }\n  | p[contenteditable=\"true\"]:focus {\n  |     outline: 1px solid white;\n  |     background-color: rgba(255, 255, 255, 0.2);\n  | }\n  | img {\n  |     max-width: 100%;\n  |     height: auto;\n  | }
 
 script
+  | const userLoggedIn = #{!!session[:user_id]};
   | document.addEventListener('DOMContentLoaded', function() {
   |     const editableParagraphs = document.querySelectorAll('p[contenteditable="true"]');
   |     editableParagraphs.forEach(function(p) {
-  |         p.addEventListener('blur', function() {
-  |             const algName = this.dataset.algName;
-  |             const newText = this.textContent;
-  |             localStorage.setItem('alg_' + algName, newText);
-  |         });
-  |         const saved = localStorage.getItem('alg_' + p.dataset.algName);
-  |         if (saved) {
-  |             p.textContent = saved;
+  |         const algName = p.dataset.algName;
+  |         if (userLoggedIn) {
+  |             fetch('/load-algorithm?alg_name=' + algName)
+  |                 .then(response => response.json())
+  |                 .then(data => {
+  |                     if (data.alg_text) {
+  |                         p.textContent = data.alg_text;
+  |                     }
+  |                 })
+  |                 .catch(error => console.error('Error loading algorithm:', error));
   |         }
+  |         p.addEventListener('blur', function() {
+  |             const newText = this.textContent;
+  |             if (userLoggedIn) {
+  |                 fetch('/save-algorithm', {
+  |                     method: 'POST',
+  |                     headers: {
+  |                         'Content-Type': 'application/x-www-form-urlencoded',
+  |                     },
+  |                     body: 'alg_name=' + algName + '&alg_text=' + encodeURIComponent(newText)
+  |                 }).catch(error => console.error('Error saving algorithm:', error));
+  |             }
+  |         });
   |     });
   | });
 

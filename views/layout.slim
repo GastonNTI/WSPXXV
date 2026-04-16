@@ -11,10 +11,15 @@ html lang="en"
     center
         a href="/timer" style="color: white; margin-right: 25px; font-size: 25px;" Timer
         a href="/algorithm" style="color: white; margin-right: 25px; font-size: 25px;" Algorithm
-        a href="/account" style="color: white; font-size: 25px;" Account
+        - if session[:username]
+          span style="color: white; margin-right: 25px; font-size: 25px;" = session[:username]
+          a href="/pause-history" style="color: white; margin-right: 25px; font-size: 25px;" History
+          form method="post" action="/logout" style="display: inline;"
+            button.btn.btn-link style="color: white; font-size: 25px; padding: 0; border: none; background: none;" type="submit" Logout
+        - else
+          a href="/account" style="color: white; font-size: 25px;" Account
 
 
     body style="background-color: #222222"
-    h1 style="color: white"
 
         == yield
